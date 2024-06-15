@@ -1,0 +1,117 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:regexp/recommended",
+    "plugin:promise/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:import/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:testing-library/react",
+    "plugin:vitest/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint"],
+  "reportUnusedDisableDirectives": true,
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "ignorePatterns": ["node_modules/", "dist/"],
+  "rules": {
+    "no-param-reassign": ["error", { "props": true }],
+    "no-shadow": "warn",
+    // Code Quality Rules
+    "max-statements": ["warn", 15],
+    "max-lines": ["warn", 300],
+    "max-lines-per-function": ["warn", 40],
+    "max-params": ["warn", 3],
+    "complexity": ["warn", 10],
+    "max-nested-callbacks": ["warn", 3],
+    "max-depth": ["warn", 3],
+    "max-len": [
+      "warn",
+      {
+        "code": 110,
+        "ignoreComments": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "no-console": "warn",
+    "prefer-template": "warn",
+    "padding-line-between-statements": [
+      "warn",
+      { "blankLine": "always", "prev": "*", "next": "block-like" },
+      { "blankLine": "always", "prev": "block-like", "next": "*" },
+      { "blankLine": "always", "prev": "*", "next": "function" },
+      { "blankLine": "always", "prev": "function", "next": "*" }
+    ],
+    "promise/prefer-await-to-then": "warn",
+    "react/prop-types": 0,
+    "vitest/no-conditional-in-test": "error",
+    "vitest/no-conditional-tests": "error",
+    "vitest/no-duplicate-hooks": "error",
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true
+      }
+    ],
+    "import/order": [
+      "warn",
+      {
+        "groups": ["external", "internal"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "@typescript-eslint/ban-ts-comment": [
+      "error",
+      {
+        "ts-ignore": "allow-with-description"
+      }
+    ],
+    "@typescript-eslint/prefer-nullish-coalescing": "warn",
+    "no-restricted-imports": [
+      "warn",
+      {
+        "paths": [
+          {
+            "name": "moment",
+            "message": "Please use date-fns instead of moment.js"
+          }
+        ],
+        "patterns": [
+          {
+            "group": ["@material-ui/core/*", "@material-ui/core"],
+            "message": "Please use @hiver/ui-kit for UI components instead of direct imports from @material-ui/core."
+          },
+          {
+            "group": ["@material-ui/icons/*", "@material-ui/icons"],
+            "message": "Please use @hiver/ui-kit for icons instead of direct imports from @material-ui/icons."
+          }
+        ]
+      }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "warn",
+      {
+        "selector": "variableLike",
+        // Variables should be camelCase or UPPER_CASE (constants) or PascalCase (components, classes etc)
+        "format": ["camelCase", "UPPER_CASE", "PascalCase"],
+        "leadingUnderscore": "allow"
+      }
+    ]
+  }
+}
